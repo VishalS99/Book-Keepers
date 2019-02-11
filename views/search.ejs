@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>search</title>
+	<link rel="stylesheet" type="text/css" href="/nav.css">
+	<style>
+	body{
+		background-image: url("http://wallpaperheart.com/wp-content/uploads/2018/03/background-images-hd-1080p-colors.jpg")
+	}
+	#search button{
+		border: 0;
+		font-size: 16px;
+		color:	white;
+		background-color: #61275d;
+		border-radius: 4px
+	}	
+	#search{
+		position: absolute;
+		top: 60px;
+		text-align: center;
+		width: 100%;
+		}
+	table{
+		 border-collapse: collapse;
+		 width: 100%; 
+	}
+	 table, td{
+	 	border:  2px solid #ddd;
+		text-align: center;
+		vertical-align: middle;
+		padding: 10px;	 
+		color: white
+	}
+
+	 button{
+		border: 0;
+		text-align: center;
+		font-size: 16px;
+		background-color: black;
+		color: white;
+		cursor: pointer;
+		border-radius: 4px
+	}
+
+
+</style>
+</head>
+<body>
+	<div id="navbar">
+<ul>			
+	<li id="log">
+	<a href="/logout">logout</a>
+	</li>
+	<li id="mine">
+	<a href="/user">My Account</a>
+	</li>
+	<li>
+		<a href="/">Home</a>
+	</li>
+</ul>
+</div><br><br><br>
+
+
+<div id="search">
+<form action="/search/results" method="GET">
+<input type="text" name="book" placeholder="Search Books by Title, Author, Publisher, Subject or ISBN" >
+<button>Search</button></form>
+</div><br><br>
+
+
+<table>
+	<tbody>
+<%for(var i=0;i<booksdata.items.length;i++){%>
+	<tr>
+		<td><%= i+1%></td>
+		<%if(booksdata.items[i].volumeInfo.imageLinks){%>
+		<td><img src="<%=booksdata.items[i].volumeInfo.imageLinks.thumbnail%>"></td><%}else{%>
+		<td>NO BOOK PREVIEW</td><%}%>
+		<td><%= booksdata.items[i].volumeInfo.title%></td>
+		<td><%= booksdata.items[i].volumeInfo.authors%></td>
+		<td><%= booksdata.items[i].volumeInfo.averageRating%>/5</td>
+		<td>
+			<form action="/search/add" method="POST">
+				<input type="hidden" name="title1" value="<%=booksdata.items[i].volumeInfo.title%>">
+				<input type="hidden" name="author1" value="<%=booksdata.items[i].volumeInfo.authors	%>">
+				<%if(booksdata.items[i].volumeInfo.imageLinks){%>
+				<input type="hidden" name="thumbnail1" value = "<%=booksdata.items[i].volumeInfo.imageLinks.thumbnail%>"><%}%>
+
+				<button>Add to libraray</button>
+			</form><br><br><br>
+				<form action="/search/add" method="POST">
+				<input type="hidden" name="title2" value="<%=booksdata.items[i].volumeInfo.title%>">
+				<input type="hidden" name="author2" value="<%=booksdata.items[i].volumeInfo.authors	%>">
+				<%if(booksdata.items[i].volumeInfo.imageLinks){%>
+				<input type="hidden" name="thumbnail2" value = "<%=booksdata.items[i].volumeInfo.imageLinks.thumbnail%>"><%}%>
+
+				<button>Add to Wishlist</button>
+			</form>
+
+		</td>
+			
+	</tr>
+	<%}%>
+
+	</tbody>
+</table>
+<script>
+if(!<%=loggedin%>)
+{
+	document.querySelector("#log").style.display= "none";
+	document.querySelector("#mine").style.display= "none"
+
+
+}
+
+</script>
+</body>
+
+</html>

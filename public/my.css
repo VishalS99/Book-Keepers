@@ -1,0 +1,96 @@
+	#search button{
+		border: 0;
+		font-size: 16px;
+		color:	white;
+		background-color: #61275d;
+		border-radius: 4px
+	}	
+	#search{
+		position: absolute;
+		top: 60px;
+		text-align: center;
+		width: 100%;
+		}
+
+		#privacybtn{
+			position: absolute;
+			top:180px;
+			text-align: center;
+			left: 730px;
+			cursor: pointer;
+		}
+
+	h4{
+	text-align: center;
+	width: 100%
+	}
+	#name{
+		position: absolute;
+		top: 100px;
+		width: 100%;
+		text-align: center;
+	}
+	#booksdisplay{
+		position: relative;
+		top: 200px;
+	}
+	#booksdisplay #bookshelf {
+		border-collapse: collapse;
+		width: 100%;
+		border:  2px solid #ddd;
+		overflow: auto;
+		 
+
+	}
+	#booksdisplay #wishlist {
+		border-collapse: collapse;
+		width: 100%;
+		border:  2px solid #ddd;
+
+	}
+	#booksdisplay #favourites {
+		border-collapse: collapse;
+		width: 100%;
+		border:  2px solid #ddd;
+
+	}
+
+	button{
+		border: 0;
+		text-align: center;
+		font-size: 16px;
+		background-color: black;
+		color: white;
+		cursor: pointer;
+		border-radius: 4px
+	}
+
+	th,td{
+		border-left: 2px solid #ddb	;
+		border-right:2px solid #ddb;
+		text-align: center;
+		vertical-align: middle;
+		padding: 10px;
+	}
+
+	th{
+		border-bottom: 2px solid #ddb	;
+	}
+	#statusdiv{
+		position: relative;
+			right: 5px;
+    	  display: inline;
+
+	}
+
+	#status{
+		list-style-type: none;
+		text-align: center;
+	    margin: 0;
+	    padding: 0;
+	 	border: 0;
+
+	}
+	#status li{
+		display: inline;
+	}

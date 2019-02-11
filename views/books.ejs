@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="/nav.css">
+	<link rel="stylesheet" type="text/css" href="/book.css">
+</head>
+<body>
+	<div id="navbar">
+<ul>			
+	<li>
+	<a href="/logout">logout</a>
+	</li>
+	<li>
+	<a href="/user">My Account</a>
+	</li>
+	<li>
+		<a href="/">Home</a>
+	</li>
+
+</ul>
+</div>
+	<h1>Read it? Review it!</h1>
+<div id="body">
+<%for(var i=0;i<me.books.length;i++){%>
+	<%if(me.books[i].name === book){%>
+		<img src="<%=me.books[i].thumbnail%>">
+		<%}%><%}%>
+
+		<h3><%=book%></h3>
+		<div>
+		<form action="/user/reviewadded" method="POST">
+			<label>Your Rating : <input type="number" name="rate" placeholder="out of 5 " max="5" min="0" step="0.1" required="true"></label><br><br><br>
+			<label>Your Comment :<br> <textarea placeholder="comment" name="comment" rows="6" cols="50"></textarea></label><br><br><br>
+			<button>Submit</button>
+		</form></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title><%=me.firstname%> <%=me.lastname%></title>
+	<link rel="stylesheet" type="text/css" href="/nav.css">	
+	<link rel="stylesheet" type="text/css" href="/my.css">
+</head>
+<body>
+
+<div id="navbar">
+<ul>			
+	<li>
+	<a href="/logout">logout</a>
+	</li>
+	<li>
+	<a href="/user">My Account</a>
+	</li>
+	<li>
+		<a href="/">Home</a>
+	</li>
+</ul>
+</div>
+
+
+<div id="search">
+<form action="/search/results" method="GET">
+<input type="text" name="book" placeholder="Search Books by Title, Author, Publisher, Subject or ISBN" >
+<button>Search</button></form></div>
+
+
+<h2 id="name"><%=me.firstname.toUpperCase()%> <%=me.lastname.toUpperCase()%></h2><br><br>
+<form method="POST" action="/user/privacy"><button id="privacybtn">Click to change privacy to
+	<%if(me.privateact){%>
+	Public<%} else{%>
+	Private<%}%>
+</button></form>
+<div id="booksdisplay" >
+<h4>My Bookshelf:</h4>
+
+<table id="bookshelf">
+	<tr id="thumb">
+		<%for(var i=0;i<me.books.length;i++){%>
+		<th><a href='/user/<%=me.books[i].name%>'><img src="<%=me.books[i].thumbnail%>"></a></th><%}%>
+	</tr>
+
+	<tr>
+		<%for(var i=0;i<me.books.length;i++){%>
+		<td><%=me.books[i].name%><br><%=me.books[i].author%></td><%}%>
+	</tr>
+	<tr>
+		<%for(var i=0;i<me.books.length;i++){%>
+		<td><form action="/user/fav" method="POST">
+			<input type="hidden" name="title" value="<%=me.books[i].name%>">
+			<input type="hidden" name="author" value="<%=me.books[i].author%>">
+			<input type="hidden" name="thumbnail" value="<%=me.books[i].thumbnail%>">
+			<button>Add to Favourites</button>
+		</form>
+		</td>
+		<%}%>
+	</tr>
+	<tr>
+		<%for(var i=0;i<me.books.length;i++){%>
+		<td>
+			<form action="/user/bookstatus" method="POST">
+			<input type="hidden" name="title" value="<%=me.books[i].name%>">
+			<div id="statusdiv">
+			<ul id="status">
+				<li><button id="<%=me.books[i].id%>reading" name="btn1" value="Reading" onclick="func1('<%=me.books[i].name%>')">Reading</button> OR</li>
+				<li><button  id="<%=me.books[i].id%>read" name="btn2" value="Read" onclick="func2('<%=me.books[i].name%>')">Read</button></li>
+			</ul></div>
+
+			</form>
+		</td>
+		<%}%>
+
+	</tr>
+	<tr>
+		<%for(var i=0;i<me.books.length;i++){%>
+		<td><p id="<%=me.books[i].id%>"></p></td><%}%>
+	</tr>
+	<tr>
+		<%for(var i=0;i<me.books.length;i++){%>
+		<td>Likes: <%=me.books[i].like%></td><%}%>
+	</tr>
+
+</table><br><br><br>
+
+<h4>My Wishlist:</h4>
+<table id="wishlist">
+	<tr id="thumb">
+		<%for(var i=0;i<me.wishlist.length;i++){%>
+				<%console.log(me.wishlist.length)	%>
+		<td><img src="<%=me.wishlist[i].thumbnail%>"></td><%}%>
+	</tr>
+	<tr>
+		<%for(var i=0;i<me.wishlist.length;i++){%>
+		<td><%=me.wishlist[i].name%><br><%=me.wishlist[i].author%></td><%}%>
+	</tr>
+</table>
+
+<h4>My Favourites:</h4>
+<table id="favourites">
+	<tr id="thumb">
+		<%for(var i=0;i<me.favourites.length;i++){%>
+		<td><img src="<%=me.favourites[i].thumbnail%>"></td><%}%>
+	</tr>
+	<tr>
+		<%for(var i=0;i<me.favourites.length;i++){%>
+		<td><%=me.favourites[i].name%><br><%=me.favourites[i].author%></td><%}%>
+	</tr>
+</table>
+</div>
+
+</body>
+<script>
+	<%for(var i=0;i<me.books.length;i++){%>
+					if(<%=me.books[i].reading%>)
+						document.getElementById("<%=me.books[i].id%>").textContent = "Reading"
+					<%}%>
+	<%for(var i=0;i<me.books.length;i++){%>
+					if(<%=me.books[i].read%>)
+						document.getElementById("<%=me.books[i].id%>").textContent = "Read"
+					<%}%>
+	function func1(b)
+	{
+				<%for(var i=0;i<me.books.length;i++){%>
+					if('<%=me.books[i].name%>' === b)
+						document.getElementById("<%=me.books[i].id%>").textContent = "Reading"
+					<%}%>
+
+	}
+		function func2(b)
+	{
+				<%for(var i=0;i<me.books.length;i++){%>
+					if('<%=me.books[i].name%>' === b)
+						document.getElementById("<%=me.books[i].id%>").textContent = "Read"
+					<%}%>
+
+	}
+
+</script>
+</html>

@@ -1,0 +1,91 @@
+		
+	h3	{
+		color: white;
+	}
+	body{
+		background-image: url("http://wallpaperheart.com/wp-content/uploads/2018/03/background-images-hd-1080p-colors.jpg")
+	}
+	#signup{
+		position: absolute;
+		top: 0px;
+		font-size: 14px;
+		left: 20px
+	}
+	#signup button{
+		border: 0;
+		font-size: 16px;
+		color:	white;
+		background-color: #61275d;
+		border-radius: 4px
+	}	
+		#login button{
+		border: 0;
+		font-size: 16px;
+		color:	white;
+		background-color: #61275d;
+		border-radius: 4px
+	}	
+			#search button{
+			border: 0;
+		font-size: 16px;
+		color:	white;
+		background-color: #61275d;
+		border-radius: 4px
+	}	
+		#searchfriend button{
+			border: 0;
+		font-size: 16px;
+		color:	white;
+		background-color: #61275d;
+		border-radius: 4px
+	}	
+	input{
+		border: 1.5px solid #496da9;
+		border-radius: 5px
+	}
+	select{
+		border: 0;
+		color: white;
+		background-color: #63361d;
+		opacity: 0.6
+	}
+	#login{
+		position: absolute;
+		left: 1300px;
+		top: -10px;		
+
+	}
+		p{
+		position: absolute;
+		top: 70px;
+		left: 600px;
+		color: white;
+		font-size: 32px;				 
+	}
+	h1{
+		position: absolute;
+	}
+
+	h1 a{
+		font-size: 50px;
+		color: white;
+		position: absolute;
+		text-align: center;
+		top: 100px;
+		text-decoration: none;
+		left:	650px;
+	}	
+	#search{
+		position: absolute;
+		top: 250px;
+		text-align: center;
+		width: 100%;
+		}
+		#searchfriend{
+			position: absolute;
+			top: 300px;
+			text-align: center;
+			width: 100%;
+
+		}
+		

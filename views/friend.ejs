@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="/nav.css">
+	<link rel="stylesheet" type="text/css" href="/frnd.css">
+
+</head>
+<body>
+<div id="navbar">
+<ul>			
+	<li>
+	<a href="/logout">logout</a>
+	</li>
+	<li>
+	<a href="/user">My Account</a>
+	</li>
+	<li>
+		<a href="/">Home</a>
+	</li>
+</ul>
+</div><br><br>
+<div id="search">
+<form action="/search/results" method="GET">
+<input type="text" name="book" placeholder="Search Books by Title, Author, Publisher, Subject or ISBN" >
+<button>Search</button></form></div>
+<h1><%=fun.firstname%> <%=fun.lastname%></h1>
+<h3 id="privacyinfo">Account is Private!</h3>
+<div id="booksdisplay">
+<h4><%=fun.firstname%>'s Bookshelf:</h4>
+<table id="bookshelf">
+	<tr id="thumb">
+		<%for(var i=0;i<fun.books.length;i++){%>
+		<th>
+			<img src="<%=fun.books[i].thumbnail%>">
+		</th>
+		<%}%>
+	</tr>
+
+	<tr>
+		<%for(var i=0;i<fun.books.length;i++){%>
+		<td>
+			<%=fun.books[i].name%>
+			<br>
+			<%=fun.books[i].author%>
+		</td>
+		<%}%>
+	</tr>
+	<tr>
+		<%for(var i=0;i<fun.books.length;i++){%>
+		<td>
+			<%=fun.books[i].rate%>
+		</td>
+		<%}%>
+	</tr>
+		<tr>
+		<%for(var i=0;i<fun.books.length;i++){%>
+		<td><p id="<%=fun.books[i].id%>"></p></td><%}%>
+	</tr>
+	<tr>
+		<%for(var i=0;i<fun.books.length;i++){%>
+		<td>
+			<%if(fun.books[i].reading){%>
+				Reading<%} else if(fun.books[i].read){%>
+				Read<%}%>
+		</td><%}%>
+	</tr>
+	<tr>
+		<%for(var i=0;i<fun.books.length;i++){%>
+		<td>
+			<form action="/friend/<%=fun.username%>/<%=fun.books[i].name%>/like" method="POST">
+			<button>Like</button>
+		</form>
+		</td>
+		<%}%>	
+	</tr>
+</table><br><br><br>
+
+<h4><%=fun.firstname%>'s Wishlist:</h4>
+<table id="wishlist">
+	<tr id="thumb">
+		<%for(var i=0;i<fun.wishlist.length;i++){%>
+		<th>
+			<img src="<%=fun.wishlist[i].thumbnail%>">
+		</th>
+		<%}%>
+	</tr>
+	<tr>
+		<%for(var i=0;i<fun.wishlist.length;i++){%>
+		<td>
+			<%=fun.wishlist[i].name%>
+			<br>
+			<%=fun.wishlist[i].author%>
+		</td>
+		<%}%>
+	</tr>
+
+</table>
+
+
+
+<h4><%=fun.firstname%>'s Favourites:</h4>
+<table id="favourites">
+	<tr id="thumb">
+		<%for(var i=0;i<fun.favourites.length;i++){%>
+		<th>
+			<img src="<%=fun.favourites[i].thumbnail%>">
+		</th>
+		<%}%>
+	</tr>
+	<tr>
+		<%for(var i=0;i<fun.favourites.length;i++){%>
+		<td>
+			<%=fun.favourites[i].name%>
+			<br>
+			<%=fun.favourites[i].author%>
+		</td>
+		<%}%>
+	</tr>
+</table>
+</div>
+
+	<script>
+		if(<%=fun.privateact%>)
+			{document.querySelector("#booksdisplay").style.display = "none";
+			document.querySelector("#privacyinfo").style.display = "block";}
+			else{
+				document.querySelector("#booksdisplay").style.display = "block";
+				document.querySelector("#privacyinfo").style.display = "none";
+
+			}
+
+	</script>
+
+
+</body>
+</html>

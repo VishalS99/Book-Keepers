@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>
+		Home
+	</title>
+<link rel="stylesheet" type="text/css" href="/nav.css">
+<link rel="stylesheet" type="text/css" href="/home.css">
+</head>
+<body>
+<div id="signup">
+	<h3>New here? Create an account!</h3>
+	<form action="/signup" method="POST">
+		<input type="text" name="fname" placeholder="First name"><br><br>
+		<input type="text" name="lname" placeholder="Last name"><br><br>
+		<input type="text" name="username" placeholder="username"><br><br>
+		<input type="password" name="password" placeholder="password"><br><br>
+		<input type="email" name="email" placeholder="email"><br><br>
+		<select name = "privacy">
+			<option value="Private">Private</option>
+			<option value="Public">Public</option>
+		</select><br><br>
+		<button>Sign up</button>
+	</form></div>
+	<br><br><br>
+	<div id="login">
+	<form action="/login" method="POST">
+		<h3>If u already have an account, Log in!</h3>
+		<input type="text" name="username" placeholder="username">
+		<input type="password" name="password" placeholder="password">
+		<button>Log in</button>
+	</form>
+</div>
+</div>
+
+
+
+<div id="navbar">
+<ul>			
+	<li>
+	<a href="/logout">logout</a>
+	</li>
+	<li>
+	<a href="/user">My Account</a>
+	</li>
+
+</ul>
+</div>
+
+<h1><a href="/">BOOKKEEPERS</a></h1>
+<div id="searchfriend">
+	<form action="/friend/search" method="POST">
+		<input type="text" name="friend" placeholder="Friend's Username">
+		<button>Search</button>
+	</form>
+</div>
+<div id="search">
+<form action="/search/results" method="GET">
+<input type="text" name="book" placeholder="Search Books by Title, Author, Publisher, Subject or ISBN" >
+<button>Search</button></form></div>
+<p>Create Account to add book</p>
+</body>
+<script>
+	if(<%=loggedin%>){
+		document.getElementById("signup").style.display = 'none';
+		document.getElementById("searchfriend").style.display = "block"
+		document.getElementById("login").style.display = "none"
+	}
+	else{
+		document.getElementById("searchfriend").style.display = "none";
+		document.getElementById("navbar").style.display = "none"
+
+	}
+	if(<%=y%> ===0)
+	{
+		document.querySelector("p").style.display= "none";
+	}
+	else
+	{
+		document.querySelector("p").style.display= "block";
+	}
+</script>
+</html>
