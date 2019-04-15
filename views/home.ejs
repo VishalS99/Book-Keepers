@@ -3,7 +3,7 @@
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>
-		Home
+		Book Keepers
 	</title>
 <link rel="stylesheet" type="text/css" href="/nav.css">
 <link rel="stylesheet" type="text/css" href="/home.css">
@@ -12,11 +12,11 @@
 <div id="signup">
 	<h3>New here? Create an account!</h3>
 	<form action="/signup" method="POST">
-		<input type="text" name="fname" placeholder="First name"><br><br>
-		<input type="text" name="lname" placeholder="Last name"><br><br>
-		<input type="text" name="username" placeholder="username"><br><br>
-		<input type="password" name="password" placeholder="password"><br><br>
-		<input type="email" name="email" placeholder="email"><br><br>
+		<input type="text" name="fname" placeholder="First name" autocomplete="off"><br><br>
+		<input type="text" name="lname" placeholder="Last name" autocomplete="off"><br><br>
+		<input type="text" name="username" placeholder="username" autocomplete="off"><br><br>
+		<input type="password" name="password" placeholder="password" autocomplete="off"><br><br>
+		<input type="email" name="email" placeholder="email" autocomplete="off"><br><br>
 		<select name = "privacy">
 			<option value="Private">Private</option>
 			<option value="Public">Public</option>
@@ -27,8 +27,8 @@
 	<div id="login">
 	<form action="/login" method="POST">
 		<h3>If u already have an account, Log in!</h3>
-		<input type="text" name="username" placeholder="username">
-		<input type="password" name="password" placeholder="password">
+		<input type="text" name="username" placeholder="username" autocomplete="off">
+		<input type="password" name="password" placeholder="password" autocomplete="off">
 		<button>Log in</button>
 	</form>
 </div>
@@ -57,7 +57,7 @@
 </div>
 <div id="search">
 <form action="/search/results" method="GET">
-<input type="text" name="book" placeholder="Search Books by Title, Author, Publisher, Subject or ISBN" >
+<input type="text" name="book" placeholder="Search Books by Title, Author, Publisher, Subject or ISBN" autocomplete="off" >
 <button>Search</button></form></div>
 <p>Create Account to add book</p>
 </body>

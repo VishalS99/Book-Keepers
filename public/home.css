@@ -3,13 +3,14 @@
 		color: white;
 	}
 	body{
-		background-image: url("http://wallpaperheart.com/wp-content/uploads/2018/03/background-images-hd-1080p-colors.jpg")
+		background-image: url('/wallpaper1.jpg');
 	}
 	#signup{
 		position: absolute;
 		top: 0px;
 		font-size: 14px;
-		left: 20px
+		left: 20px;
+		font-family: Arial, Helvetica, sans-serif;	
 	}
 	#signup button{
 		border: 0;
@@ -52,7 +53,8 @@
 	#login{
 		position: absolute;
 		left: 1300px;
-		top: -10px;		
+		top: -10px;	
+		font-family: Arial, Helvetica, sans-serif;	
 
 	}
 		p{
@@ -64,6 +66,7 @@
 	}
 	h1{
 		position: absolute;
+		font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 	}
 
 	h1 a{
